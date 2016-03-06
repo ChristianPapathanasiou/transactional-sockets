@@ -66,7 +66,7 @@ class TransactionController extends Controller
         $transaction->save();
         
         $project = Project::find($transaction->project_id);
-        $project->amount_raised = $project->amount_raised + intval($request->input('amount'));
+        $project->amount_raised = $project->amount_raised + $transaction->amount;
         $project->save();
 
         return view('thanks')->with('transaction', $transaction);
