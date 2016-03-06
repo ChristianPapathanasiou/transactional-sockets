@@ -10,7 +10,8 @@
             <h1 class="text-center">{{ $transaction->project->name }}</h1>
             <form id="form" action="/transaction/process" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input id="expires_at" type="hidden" name="expires_at" value="{{ $transaction->expires_at }}">
+                <input id="time_now" type="hidden" name="time_now" value="{{ date('m/d/Y h:i:s') }}" />
+                <input id="expires_at" type="hidden" name="expires_at" value="{{ $transaction->expires_at }}" />
                  <div class="form-group">
                     <label for="amount">Amount to Invest</label>
                     <input type="number" name="amount" class="form-control" disabled value="{{ $transaction->amount }}" />

@@ -9908,13 +9908,15 @@ var vm;
               el: '.project-transaction',
               data: {
                 expires_at:  $("#expires_at").val(),
+                time_now:  $("#time_now").val(),
                 time_left: null,
                 time_left_display: null
               },
               ready: function() {
                 // Simple countdown timer
                 setInterval(function(){
-                    var ms = moment.utc(vm.$get('expires_at')).diff(moment.utc());
+                    vm.$set('time_now', moment.utc(vm.$get('time_now')).add(1, 'second'));
+                    var ms = moment.utc(vm.$get('expires_at')).diff(moment.utc(vm.$get('time_now')));
                     vm.$set('time_left', ms);
                     var s = moment.utc(ms).format("mm:ss");
                     vm.$set('time_left_display', s);

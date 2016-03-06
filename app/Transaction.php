@@ -25,7 +25,7 @@ class Transaction extends Model
         'transacted_at', 
         'expires_at'
     ];
-
+    
     public function project()
     {
         return $this->belongsTo('App\Project');
