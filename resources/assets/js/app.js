@@ -13,7 +13,7 @@ var vm;
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        socket = io.connect('http://homestead.app:3000');
+        socket = io.connect('http://'+window.location.hostname+':3000');
         Vue.http.headers.common['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content');
         $.ajaxSetup({
             headers: {
@@ -30,8 +30,6 @@ var vm;
       init: function() {
         // JavaScript to be fired on any page with a project transaction
         socket.on('project-transaction', function(data){
-            console.log('got it!');
-            console.log(data);
             vm.$set('project', data.project);
         }.bind(this));
       }
