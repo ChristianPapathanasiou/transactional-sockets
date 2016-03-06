@@ -19,7 +19,7 @@
                     <div class="alert alert-danger" v-if="invalid">You've exceed the Maximum amount! Please enter a lower amount.</div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block" v-bind:class="{ 'disabled': invalid }">Submit</button>
                 </div>
             </div>
         </form>

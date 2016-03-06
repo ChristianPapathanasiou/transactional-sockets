@@ -50,7 +50,14 @@ var vm;
                   } else {
                     vm.$set('invalid', false);
                   }
-                })
+                });
+                this.$watch('amount_left', function (amount_left) {
+                  if(this.amount > amount_left){
+                    vm.$set('invalid', true);
+                  } else {
+                    vm.$set('invalid', false);
+                  }
+                });
               },
               methods: {
                 getProject: function($id){
